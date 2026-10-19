@@ -74,7 +74,7 @@ A tested and fully working Arduino Nano sketch for a Psycho-Pass Dominator cospl
 
 ## Audio files
 
-Format the microSD card as FAT32 and place these files in the `/mp3` folder:
+The audio files are stored in the repository's [`Mp3`](Mp3) folder. Format the microSD card as FAT32 and copy them into a lowercase `/mp3` folder on the card, as required by `playMp3Folder()`:
 
 | File | Sound |
 | :---: | --- |
@@ -82,6 +82,7 @@ Format the microSD card as FAT32 and place these files in the `/mp3` folder:
 | `0002.mp3` | Opening/transformation |
 | `0003.mp3` | Paralyzer |
 | `0004.mp3` | Lethal Eliminator shot |
+| `0005.mp3` | Additional sound (not used by the current sketch) |
 
 ## Upload and calibration
 
