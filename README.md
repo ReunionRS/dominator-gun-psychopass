@@ -1,43 +1,83 @@
-# Psycho-Pass Dominator cosplay prop
+<div align="center">
 
-[Русская версия](README_RU.md)
+# Psycho-Pass Dominator
 
-Arduino Nano sketch for a reconstructed Psycho-Pass Dominator cosplay prop. It controls four servos, plays sounds through a DFPlayer Mini, and reads a trigger button. This is a reconstruction, not a verified original project source.
+### Arduino-powered transforming cosplay prop
+
+[![Arduino Nano](https://img.shields.io/badge/Arduino-Nano-00979D?logo=arduino&logoColor=white)](https://docs.arduino.cc/hardware/nano/)
+![Servos](https://img.shields.io/badge/Servos-3-00B8D9)
+![DFPlayer Mini](https://img.shields.io/badge/Audio-DFPlayer_Mini-7B61FF)
+
+**English** · [Русский](README_RU.md)
 
 ![Dominator animation](assets/dominator-anime.gif)
 
-![Finished prop](assets/dominator-prop.gif)
+</div>
+
+## About
+
+A reconstructed Arduino Nano sketch for a Psycho-Pass Dominator cosplay prop. Three servos animate the transformation mechanism, while a DFPlayer Mini provides startup, transformation, Paralyzer, and Lethal Eliminator sounds.
+
+> This is a reconstruction for a non-functional cosplay prop, not a verified original project source.
+
+## Features
+
+- Smooth, non-blocking movement of three servos
+- Trigger-button debounce
+- Startup lock while the opening sound plays
+- Four sound effects from a microSD card
+- Serial commands for safe bench testing
+- Operation without audio if the DFPlayer is not detected
+
+<div align="center">
+
+![Finished Dominator prop](assets/dominator-prop.gif)
+
+</div>
 
 ## Hardware
 
-- Arduino Nano
-- 4 compatible servos
-- DFPlayer Mini and a microSD card
-- Speaker and the amplifier shown in the supplied diagram
-- Momentary trigger button
-- Suitable power supply, regulator, wiring, and resistors
+| Component | Quantity | Notes |
+| --- | :---: | --- |
+| Arduino Nano | 1 | Main controller |
+| Servo | 3 | Choose torque to suit the mechanism |
+| DFPlayer Mini | 1 | Audio playback from microSD |
+| Speaker and amplifier | 1 | As shown in the wiring diagram |
+| Momentary button | 1 | Trigger input |
+| Regulated power supply | 1 | Must handle servo peak current |
+| Resistor | 1 | About 1 kΩ for Arduino TX → DFPlayer RX |
 
-## Arduino libraries
-
-- `Servo` (included with the Arduino IDE)
-- `SoftwareSerial` (included with the Arduino IDE)
-- `DFRobotDFPlayerMini` (install through Library Manager)
-
-## Pin map
+## Wiring
 
 | Function | Arduino pin |
-| --- | --- |
-| Trigger button | D4 to GND (`INPUT_PULLUP`) |
-| Servo 1–4 signals | D7, D5, D6, D8 |
+| --- | :---: |
+| Trigger button | D4 → GND |
+| Servo 1 signal | D7 |
+| Servo 2 signal | D5 |
+| Servo 3 signal | D6 |
 | DFPlayer TX → Arduino RX | A1 |
-| Arduino TX → DFPlayer RX | A2 through about 1 kΩ |
+| Arduino TX → DFPlayer RX | A2 through ~1 kΩ |
+
+<div align="center">
+
+![Wiring and soldering diagram](assets/wiring-diagram.png)
+
+</div>
+
+> Do not power the servos from the Nano's 5 V pin. Use a correctly rated regulated supply and connect all grounds together. Use protected Li-ion cells and a suitable BMS; avoid short circuits, overcharging, and deep discharge.
+
+## Software
+
+- `Servo` — included with Arduino IDE
+- `SoftwareSerial` — included with Arduino IDE
+- `DFRobotDFPlayerMini` — install through Library Manager
 
 ## Audio files
 
-Format the microSD card as FAT32 and create an `/mp3` folder containing:
+Format the microSD card as FAT32 and place these files in the `/mp3` folder:
 
-| File | Purpose |
-| --- | --- |
+| File | Sound |
+| :---: | --- |
 | `0001.mp3` | Startup |
 | `0002.mp3` | Opening/transformation |
 | `0003.mp3` | Paralyzer |
@@ -45,19 +85,21 @@ Format the microSD card as FAT32 and create an `/mp3` folder containing:
 
 ## Upload and calibration
 
-1. Open `dominator_gun_psychopass.ino` in Arduino IDE.
+1. Open [`dominator_gun_psychopass.ino`](dominator_gun_psychopass.ino) in Arduino IDE.
 2. Select the correct Arduino Nano board, processor, and port.
-3. Install `DFRobotDFPlayerMini`, then compile and upload.
+3. Install `DFRobotDFPlayerMini`, then compile and upload the sketch.
 4. Disconnect the servo linkages and calibrate `CLOSED_ANGLES` and `OPEN_ANGLES` before operating the mechanism.
 5. Set `STARTUP_AUDIO_MS` to the real duration of `0001.mp3`.
 
-For bench testing, the Serial Monitor at 9600 baud accepts `p` (close), `l` (open), and `f` (play the current firing sound).
+### Bench controls
 
-## Wiring diagram
+Open Serial Monitor at **9600 baud**:
 
-![Wiring and soldering diagram](assets/wiring-diagram.png)
-
-> **Check before soldering:** the supplied diagram visibly shows three servos, while the sketch is configured for four. Verify every connection against your actual hardware. Do not power several servos from the Nano's 5 V pin; use a correctly rated regulated supply and connect all grounds together. Use protected cells/a suitable BMS and never short, overcharge, or over-discharge Li-ion cells.
+| Command | Action |
+| :---: | --- |
+| `p` | Close / Paralyzer mode |
+| `l` | Open / Lethal Eliminator mode |
+| `f` | Play the current firing sound |
 
 ## Safety
 
