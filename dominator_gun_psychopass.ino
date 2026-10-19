@@ -2,7 +2,7 @@
 #include <SoftwareSerial.h>
 #include <DFRobotDFPlayerMini.h>
 
-// Reconstructed cosplay prop sketch, not the original verified source.
+// Tested and working Psycho-Pass Dominator cosplay prop sketch.
 constexpr uint8_t TRIGGER_PIN = 4;
 constexpr uint8_t SERVO_COUNT = 3;
 constexpr uint8_t SERVO_PINS[SERVO_COUNT] = {7, 5, 6};

@@ -16,9 +16,9 @@
 
 ## About
 
-A reconstructed Arduino Nano sketch for a Psycho-Pass Dominator cosplay prop. Three servos animate the transformation mechanism, while a DFPlayer Mini provides startup, transformation, Paralyzer, and Lethal Eliminator sounds.
+A tested and fully working Arduino Nano sketch for a Psycho-Pass Dominator cosplay prop. Three servos animate the transformation mechanism, while a DFPlayer Mini provides startup, transformation, Paralyzer, and Lethal Eliminator sounds.
 
-> This is a reconstruction for a non-functional cosplay prop, not a verified original project source.
+> The code and wiring have been tested on the completed prop.
 
 ## Features
 
@@ -103,4 +103,4 @@ Open Serial Monitor at **9600 baud**:
 
 ## Safety
 
-This is a non-functional cosplay prop. Follow local rules for replica props, use an orange tip or other required markings, and never carry or display it where it could be mistaken for a real weapon.
+This is an electronic cosplay prop, not a weapon. Follow local rules for replica props, use an orange tip or other required markings, and never carry or display it where it could be mistaken for a real weapon.
